@@ -21,7 +21,7 @@ function App() {
     console.log('Container useEffect');
     const getUser = async () => {
       try {
-        const response = await fetch('http://localhost:5000/auth/user/');
+        const response = await fetch('/auth/user');
         const json = await response.json();
         setUser(json);
         setId(json._id);
