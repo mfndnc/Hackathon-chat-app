@@ -28,31 +28,20 @@ router.post(
   })
 );
 
-// if you need more control and also want to set an error message
-// router.post('/login', (req, res, next) => {
-//   passport.authenticate('local', (err, theUser, failureDetails) => {
-//     console.log('Inside passport.authenticate', err, theUser, failureDetails);
-//     if (err) {
-//       // Something went wrong authenticating user
-//       return next(err);
-//     }
-//     if (!theUser) {
-//       // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
-//       return res.render('auth/login', {
-//         message: 'Wrong password or username',
-//       });
-//     }
-//     // save user in session: req.user
-//     req.login(theUser, (err) => {
-//       if (err) {
-//         // Session save went bad
-//         return next(err);
-//       }
-//       // All good, we are now logged in and `req.user` is now set
-//       res.redirect('/');
-//     });
-//   })(req, res, next);
-// });
+//if you need more control and also want to set an error message
+router.post('/loginapi', (req, res, next) => {
+  console.log('router.post', req.body);
+  passport.authenticate('local', (err, theUser, failureDetails) => {
+    console.log('Inside passport.authenticate', err, theUser, failureDetails);
+    if (err) res.status(200).json({ err, success: false });
+    if (!theUser) res.status(200).json({ err, success: false });
+    req.login(theUser, (err) => {
+      if (err) res.status(200).json({ err, success: false });
+      const { username, fullName, _id } = theUser;
+      return res.status(200).json({ success: true, username, fullName, _id });
+    });
+  })(req, res, next);
+});
 
 router.post('/signup', (req, res, next) => {
   const { username, password, email, fullName } = req.body;
