@@ -1,1 +1,37 @@
-{}
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devo": "nodemon server.js",
+    "start": "node server.js",
+    "server": "node server.js",
+    "client": "npm start --prefix client",
+    "clienttest": "npm start --prefix clienttest",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+    "dev2": "concurrently --kill-others \"npm run server\" \"npm run clienttest\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.4.1",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "hbs": "^4.1.2",
+    "mongoose": "^5.12.7",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.1.0",
+    "nodemon": "^2.0.4"
+  }
+}
