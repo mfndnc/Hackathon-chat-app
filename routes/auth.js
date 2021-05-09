@@ -10,9 +10,9 @@ router.get('/login', alreadyLogged(), (req, res, next) => {
   res.render('auth/login');
 });
 
-router.get('/signup', alreadyLogged(), (req, res, next) => {
-  res.render('auth/signup');
-});
+// router.get('/signup', alreadyLogged(), (req, res, next) => {
+//   res.render('auth/signup');
+// });
 
 router.get('/logout', (req, res, next) => {
   req.logout();

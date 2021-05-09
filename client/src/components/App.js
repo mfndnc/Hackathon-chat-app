@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Login from './Login';
 import useLocalStorage from '../hooks/useLocalStorage';
 import Dashboard from './Dashboard';
-import LoginMERN from './LoginMERN';
+import Login from './LoginMERN';
 import { ContactsProvider } from '../contexts/ContactsProvider';
 import { ConversationsProvider } from '../contexts/ConversationsProvider';
 import { SocketProvider } from '../contexts/SocketProvider';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Signup from './Signup';
 
 function App() {
   const [id, setId] = useState('id');
@@ -33,19 +35,27 @@ function App() {
 
   if (loading) return <div>Loading ...</div>;
 
-  if (!loading && user && user.username)
-    return (
-      <SocketProvider id={id}>
-        <ContactsProvider>
-          <ConversationsProvider id={id}>
-            <Dashboard id={id} />
-          </ConversationsProvider>
-        </ContactsProvider>
-      </SocketProvider>
-    );
+  // if (user && user.username)
+  return (
+    <Router>
+      <Switch>
+        <Route exact path='/'>
+          <SocketProvider id={id}>
+            <ContactsProvider>
+              <ConversationsProvider id={id}>
+                <Dashboard id={id} />
+              </ConversationsProvider>
+            </ContactsProvider>
+          </SocketProvider>
+        </Route>
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/login' component={Login} />
+      </Switch>
+    </Router>
+  );
 
-  if (user && !user.username)
-    return <LoginMERN onLoginSuccess={setLogInDone} />;
+  // if (user && !user.username)
+  //   return <LoginMERN onLoginSuccess={setLogInDone} />;
 }
 
 export default App;
