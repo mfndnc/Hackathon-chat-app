@@ -36,6 +36,7 @@ app.locals.title = `${capitalized(projectName)} created with Ironlauncher`;
 // 👇 Start handling routes here
 
 app.use('/', require('./routes/auth'));
+app.use('/', require('./routes/users'));
 
 if (process.env.ENVLOCAL && process.env.ENVLOCAL === 'local') {
   console.log('local app');

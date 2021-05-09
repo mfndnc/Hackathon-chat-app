@@ -80,13 +80,4 @@ router.get('/private', loginCheck(), (req, res) => {
   res.render('auth/private', { user: req.user });
 });
 
-router.get('/auth/user', (req, res) => {
-  if (req.user) {
-    const { username, fullName, _id } = req.user;
-    res.json({ username, fullName, _id });
-  } else {
-    res.json({ username: null });
-  }
-});
-
 module.exports = router;

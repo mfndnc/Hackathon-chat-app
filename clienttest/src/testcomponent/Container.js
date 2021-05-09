@@ -3,6 +3,7 @@ import Login from './LoginMERN';
 import ListOfThings from './ListOfThings';
 import ListFetch from './ListFetch';
 import AnotherOne from './AnotherOne';
+import ShowUsers from './ShowUsers';
 
 export default function Container() {
   const [loading, setLoading] = useState(true);
@@ -29,6 +30,7 @@ export default function Container() {
       <div>
         {user.username} / PUT add here
         <a href={`${process.env.REACT_APP_USERAPI}/logout`}>logout</a>
+        <ShowUsers />
       </div>
     );
 
