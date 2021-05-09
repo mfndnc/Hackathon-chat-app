@@ -18,12 +18,15 @@ function App() {
   useEffect(() => {
     console.log('Container useEffect');
     const getUser = async () => {
-      const response = await fetch('/auth/user/');
-      const json = await response.json();
-
-      setUser(json);
-      setId(json._id);
-      setLoading(false);
+      try {
+        const response = await fetch('http://localhost:5000/auth/user/');
+        const json = await response.json();
+        setUser(json);
+        setId(json._id);
+        setLoading(false);
+      } catch (e) {
+        console.log(e)
+      }
     };
     getUser();
   }, [logInDone]);

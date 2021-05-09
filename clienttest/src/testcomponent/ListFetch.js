@@ -65,8 +65,7 @@ export default function ListFetch() {
           required
         />
         <button type="submit">
-          {!isPending && <span>Fetch Data</span>}
-          {isPending && <h3>loading...</h3>}
+          {!isPending ? <span>Fetch Data</span> : <h3>loading...</h3>}
         </button>
       </form>
       {data && (

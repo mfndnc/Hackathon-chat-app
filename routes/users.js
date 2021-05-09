@@ -5,6 +5,7 @@ const Users = require('../models/Users');
 const { loginCheck } = require('./middlewares');
 
 router.get('/auth/user', (req, res) => {
+  console.log('here')
   if (req.user) {
     const { username, fullName, _id } = req.user;
     res.json({ username, fullName, _id });
