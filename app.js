@@ -52,6 +52,14 @@ if (process.env.ENVLOCAL && process.env.ENVLOCAL === 'local') {
     // If no routes match, send them the React HTML.
     res.sendFile(__dirname + '/clienttest/build/index.html');
   });
+} else if (process.env.ENVLOCAL && process.env.ENVLOCAL === 'localpub') {
+  console.log('local app test');
+  app.use('/', require('./routes/tests'));
+  app.use(express.static(path.join(__dirname, '/client/build')));
+  app.use((req, res) => {
+    // If no routes match, send them the React HTML.
+    res.sendFile(__dirname + '/clienttest/build/index.html');
+  });
 } else {
   console.log('build app');
   const path = require('path');
