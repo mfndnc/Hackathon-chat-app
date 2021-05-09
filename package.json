@@ -10,7 +10,9 @@
     "client": "npm start --prefix client",
     "clienttest": "npm start --prefix clienttest",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "dev2": "concurrently --kill-others \"npm run server\" \"npm run clienttest\""
+    "dev2": "concurrently --kill-others \"npm run server\" \"npm run clienttest\"",
+    "build": "cd client && npm run build",
+    "install": "cd client && npm install"
   },
   "keywords": [],
   "author": "",
