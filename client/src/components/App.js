@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Login from './Login';
+// import Login from './Login';
 import useLocalStorage from '../hooks/useLocalStorage';
 import Dashboard from './Dashboard';
 import Login from './LoginMERN';
@@ -39,7 +39,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path='/dashboard'>
           <SocketProvider id={id}>
             <ContactsProvider>
               <ConversationsProvider id={id}>
@@ -48,8 +48,11 @@ function App() {
             </ContactsProvider>
           </SocketProvider>
         </Route>
+        <Route exact path='/' component={Signup} />
         <Route exact path='/signup' component={Signup} />
-        <Route exact path='/login' component={Login} />
+        <Route exact path='/login'>
+          <Login onLoginSuccess={setLogInDone} />
+        </Route>
       </Switch>
     </Router>
   );

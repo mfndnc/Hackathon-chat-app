@@ -66,7 +66,7 @@ if (process.env.ENVLOCAL && process.env.ENVLOCAL === 'local') {
   app.use(express.static(path.join(__dirname, '/client/build')));
   app.use((req, res) => {
     // If no routes match, send them the React HTML.
-    res.sendFile(__dirname + '/client/build/public/index.html');
+    res.sendFile(__dirname + '/client/build/index.html');
   });
 }
 

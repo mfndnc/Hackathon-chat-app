@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
 import { Container, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 
 function Signup() {
+  const history = useHistory();
   const handleSubmit = async (e) => {
     console.log('handleSubmit');
     e.preventDefault();
@@ -17,6 +19,7 @@ function Signup() {
 
     const response = await axios.post('/signup', data);
     console.log(response)
+    history.push('/login')
   }
   return (
     <Container

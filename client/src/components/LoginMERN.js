@@ -1,8 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
 
 export default function Login({ onLoginSuccess }) {
+  const history = useHistory()
   const [logindata, setLogindata] = useState({
     username: '',
     fullName: '',
@@ -36,6 +39,7 @@ export default function Login({ onLoginSuccess }) {
       console.log('response', response.status, response.data);
       if (response && response.data && response.data.success)
         setLogindata(response.data);
+      history.push('/dashboard')
     };
     getLogin(data);
   };
