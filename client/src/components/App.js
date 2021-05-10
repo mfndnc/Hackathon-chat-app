@@ -9,6 +9,8 @@ import { SocketProvider } from '../contexts/SocketProvider';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Signup from './Signup';
 
+const apiforuserlogged = process.env.REACT_APP_USER || '/auth/user';
+
 function App() {
   const [id, setId] = useState('id');
 
@@ -21,13 +23,14 @@ function App() {
     console.log('Container useEffect');
     const getUser = async () => {
       try {
-        const response = await fetch('/auth/user');
+        const response = await fetch(`${apiforuserlogged}`);
         const json = await response.json();
         setUser(json);
         setId(json._id);
+        console.log('json._id', json._id);
         setLoading(false);
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
     };
     getUser();
@@ -39,7 +42,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/dashboard'>
+        <Route exact path="/dashboard">
           <SocketProvider id={id}>
             <ContactsProvider>
               <ConversationsProvider id={id}>
@@ -48,9 +51,9 @@ function App() {
             </ContactsProvider>
           </SocketProvider>
         </Route>
-        <Route exact path='/' component={Signup} />
-        <Route exact path='/signup' component={Signup} />
-        <Route exact path='/login'>
+        <Route exact path="/" component={Signup} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login">
           <Login onLoginSuccess={setLogInDone} />
         </Route>
       </Switch>
