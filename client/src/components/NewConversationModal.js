@@ -1,39 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useContacts } from '../contexts/ContactsProvider';
 import { useConversations } from '../contexts/ConversationsProvider';
 
 export default function NewConversationModal({ closeModal }) {
   const [selectedContactIds, setSelectedContactIds] = useState([]);
-  // const { contacts } = useContacts()
+  const { contacts } = useContacts();
   const { createConversation } = useConversations();
-
-  const [loading, setLoading] = useState(true);
-  const [contacts, setContacts] = useState([]);
-
-  useEffect(() => {
-    console.log('Contacts useEffect');
-    const getContacts = async () => {
-      const apiforallusers = process.env.REACT_APP_USERS || '/api/users';
-      try {
-        const response = await fetch(`${apiforallusers}`);
-        const json = await response.json();
-        console.log('getContacts json', json);
-        setContacts(
-          json.data.map((e) => ({
-            id: e._id,
-            name: e.username,
-            fullName: e.fullName,
-            username: e.username,
-          }))
-        );
-        setLoading(false);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    getContacts();
-  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
