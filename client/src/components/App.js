@@ -13,7 +13,7 @@ import Enter from './Enter';
 const apiforuserlogged = process.env.REACT_APP_USER || '/auth/user';
 
 function App() {
-  const [id, setId] = useLocalStorage('id');
+  const [id, setId] = useState('id');
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
