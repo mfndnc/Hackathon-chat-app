@@ -8,6 +8,7 @@ import { ConversationsProvider } from '../contexts/ConversationsProvider';
 import { SocketProvider } from '../contexts/SocketProvider';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Signup from './Signup';
+import Enter from './Enter';
 
 const apiforuserlogged = process.env.REACT_APP_USER || '/auth/user';
 
@@ -51,7 +52,7 @@ function App() {
             </ContactsProvider>
           </SocketProvider>
         </Route>
-        <Route exact path="/" component={Signup} />
+        <Route exact path="/" component={Enter} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login">
           <Login onLoginSuccess={setLogInDone} />
