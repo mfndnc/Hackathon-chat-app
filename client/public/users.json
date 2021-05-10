@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "data": [
+    {
+      "username": "marcia",
+      "fullName": "Marcia Marcia",
+      "_id": "6096eb469d1c914084fd1a1b"
+    },
+    {
+      "username": "marcia2",
+      "fullName": "marcia 2 marcia",
+      "_id": "6097d0694521b159e8fe5b28"
+    },
+    {
+      "username": "marcia3",
+      "fullName": "marcia 3 fake",
+      "_id": "6097d0904521b159e8fe5b29"
+    },
+    {
+      "username": "marcia4",
+      "fullName": "Marcia4",
+      "_id": "6098d11884b62311d41b9c95"
+    }
+  ]
+}
