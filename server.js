@@ -6,13 +6,13 @@ require('./error-handling')(app);
 
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
 const server = app.listen(PORT, () => {
   console.log(`Server listening on port http://localhost:${PORT}`);
 });
 let io;
 
 if (process.env.ENVLOCAL) {
+  app.use(cors());
   console.log('LOCAL adding CORS');
   io = require('socket.io')(server, {
     cors: {
