@@ -1,0 +1,26 @@
+<div class="su-form py-5">
+    <form action="/signup" method="POST" class="form-container my-5 py-5">
+
+        <h2 class="mb-4">Sign Up</h2>
+
+        <label for="username">User Name: </label>
+        <input type="text" name="username" id="username" required class="my-3 input-outline">
+
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" required class="my-3 input-outline">
+
+        <label for="fullName">Full Name: </label>
+        <input type="text" name="fullName" id="fullName" class="my-3 input-outline">
+
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" class="my-3 input-outline">
+
+        <button type="submit" class="btn btn-outline btn-xl js-scroll-trigger mt-4">Sign Up</button>
+
+        {{#if message}}
+        <p class="col-8 mt-3 bg-danger text-white rounded">{{message}}</p>
+        {{/if}}
+
+    </form>
+
+</div>

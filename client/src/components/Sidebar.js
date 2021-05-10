@@ -18,11 +18,11 @@ export default function Sidebar({ id, username }) {
   const conversationsOpen = activeKey === CONVERSATIONS_KEY;
 
   function closeModal() {
-    setModalOpen(false);
+    setModalOpen(false)
   }
 
   return (
-    <div style={{ width: '300px' }} className="d-flex flex-column">
+    <div style={{ width: '250px' }} className="d-flex flex-column">
       <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
         <Nav variant="tabs" className="justify-content-center">
           <Nav.Item>
@@ -60,13 +60,12 @@ export default function Sidebar({ id, username }) {
         </Button>
       </Tab.Container>
 
-        <Modal show={modalOpen} onHide={closeModal}>
-          {conversationsOpen ? (
-            <NewConversationModal closeModal={closeModal} />
-          ) : (
-            <NewContactModal closeModal={closeModal} />
-          )}
-        </Modal>
-      </div>
-  );
+      <Modal show={modalOpen} onHide={closeModal}>
+        {conversationsOpen ?
+          <NewConversationModal closeModal={closeModal} /> :
+          <NewContactModal closeModal={closeModal} />
+        }
+      </Modal>
+    </div>
+  )
 }
